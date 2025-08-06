@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import TypingAnimation from './TypingAnimation';
 import ParallaxContainer from './ParallaxContainer';
 import { soundManager } from '../utils/soundManager';
+import profileImage from '../assets/oluwadare-profile.jpg';
 
 const Hero = () => {
   const { isDark } = useTheme();
@@ -61,7 +62,7 @@ const Hero = () => {
             transition={{ duration: 0.8, type: "spring" }}
             className="mb-8"
           >
-            <div className="relative w-40 h-40 mx-auto mb-8">
+            <div className="relative w-48 h-48 mx-auto mb-8">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -72,29 +73,35 @@ const Hero = () => {
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-2 rounded-full bg-gradient-to-br from-gold-300 to-gold-600 opacity-30 blur-lg"
               />
-              <div className="absolute inset-4 rounded-full bg-black border-2 border-gold-500 flex items-center justify-center overflow-hidden group">
-                <motion.div
-                  animate={{ 
-                    y: [0, -10, 0],
-                    rotateZ: [0, 5, -5, 0]
-                  }}
-                  transition={{ 
-                    duration: 4, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                  className="text-6xl"
-                >
-                  🧑‍💻
-                </motion.div>
-                <div className="absolute inset-0 bg-gold-gradient opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              </div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="absolute inset-4 rounded-full border-4 border-gold-500 overflow-hidden group shadow-2xl"
+              >
+                <img
+                  src={profileImage}
+                  alt="Oluwadare Juwon - Full Stack Developer"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gold-gradient opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+              </motion.div>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute -top-2 -right-2"
               >
                 <Sparkles className="w-6 h-6 text-gold-400" />
+              </motion.div>
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="absolute -bottom-2 -left-2"
+              >
+                <div className="w-8 h-8 bg-gold-gradient rounded-full flex items-center justify-center">
+                  <span className="text-black text-sm font-bold">⚡</span>
+                </div>
               </motion.div>
             </div>
           </motion.div>
